@@ -1,25 +1,25 @@
 #Product Requirement Document
-##1.data
-- app information:
--- title
--- id
--- link
--- description
--- launch time
--- average rating
--- rating count(current version/all versions)
--- screen shot(img)
--- logo(img)
--- category
--- alphabet
-- recommendation:
--- reommendation list
-##2.homepage
--<logo>  <app collections> <search>
+## 1.data
+> app information:
+>> title
+>> id
+>> link
+>> description
+>> launch time
+>> average rating
+>> rating count(current version/all versions)
+>> screen shot(img)
+>> logo(img)
+>> category
+>> alphabet
+> recommendation:
+> reommendation list
+## 2.homepage
+- <logo>  <app collections> <search>
 - popular apps
 - Browse by category
 - you may like
-##3.app page
+## 3.app page
 - logo
 - title(category,launch time,rating,rating count)
 - description
