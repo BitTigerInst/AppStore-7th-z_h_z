@@ -1,19 +1,19 @@
 #Product Requirement Document
 ## 1.data
 > app information:
->> title
->> id
->> link
->> description
->> launch time
->> average rating
->> rating count(current version/all versions)
->> screen shot(img)
->> logo(img)
->> category
->> alphabet
+>>- title
+- id
+- link
+- description
+- launch time
+- average rating
+- rating count(current version/all versions)
+- screen shot(img)
+- logo(img)
+- category
+- alphabet
 > recommendation:
-> reommendation list
+-reommendation list
 ## 2.homepage
 - <logo>  <app collections> <search>
 - popular apps
