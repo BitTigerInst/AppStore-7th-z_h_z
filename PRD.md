@@ -19,7 +19,7 @@
 + recommendation list
 
 ## 2.homepage ##
-+ <logo>  <app collections> <search>
++ logo, app collections, search
 + popular apps
 + Browse by category
 + you may like
