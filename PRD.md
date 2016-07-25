@@ -1,6 +1,5 @@
 #Product Requirement Document #
 ## 1.data ##
-### app information:###
 
 ### app information: ###
 + title
@@ -14,9 +13,7 @@
 + logo(img)
 + category
 + alphabet
- 
-### recommendation ###
-+ recommendation list
+
 
 ### recommendation ###
 + recommendation list
@@ -26,8 +23,6 @@
 + popular apps
 + Browse by category
 + you may like
-
-
 ## 3.app page ##
 + logo
 + title(category,launch time,rating,rating count)
