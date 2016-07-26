@@ -7,7 +7,7 @@
 + link
 + description
 + launch time
-+ average rating
++ average rating(current version/all versions)
 + rating count(current version/all versions)
 + screen shot(img)
 + logo(img)
