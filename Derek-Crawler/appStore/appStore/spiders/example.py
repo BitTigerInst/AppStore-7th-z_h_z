@@ -10,6 +10,7 @@ class appStoreSpider(scrapy.Spider):
 
     def parse(self,response):
         #select category of apps
+        #change here:
         for href in response.xpath("//div[@id='genre-nav']/div/ul/li/a/@href").extract():
             yield scrapy.Request(href,callback = self.parse_letter)
 
