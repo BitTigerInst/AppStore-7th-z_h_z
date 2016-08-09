@@ -23,7 +23,7 @@ class appStoreSpider(scrapy.Spider):
 
     def parse_category_letter(self, response): 
         #get app data
-        for href in response.xpath("//div[@id='selectedcontent']//a/@href")[1:2].extract():
+        for href in response.xpath("//div[@id='selectedcontent']//a/@href").extract():
             yield scrapy.Request(href, callback=self.parse_dir_contents)
         # get link of next page
         next_page = response.xpath("//a[contains(text(),'Next')]/@href")
@@ -39,14 +39,20 @@ class appStoreSpider(scrapy.Spider):
         else:
             return
 
-
     def parse_dir_contents(self, response):
     	item = AppstoreItem()
     	item['appID'] = response.url.split("/")[-1].split("?")[0][2:]
     	item['name'] = response.xpath("//div[@id='title']/div/h1/text()").extract()
+    	item['category'] = response.xpath("//span[@itemprop='applicationCategory']/text()").extract()
     	item['url'] = response.xpath("//meta[@itemprop='image']/@content").extract()
     	item['description'] = response.xpath("//p[@itemprop='description']/text()").extract()
     	item['rating'] = response.xpath("//div[@class='rating']/span[@itemprop='ratingValue']/text()").extract()
     	item['related_app'] = response.xpath("//div[@class='content']//div[@class='lockup small application']/@adam-id").extract()
+    	if response.xpath("//div[@class='rating']"):
+    		item['current_reviewCount'] = response.xpath("//span[@class='rating-count']/text()").extract()[0].split(" ")[0]
+    		item['all_reviewCount'] = response.xpath("//span[@class='rating-count']/text()").extract()[1].split(" ")[0]
+    	item['iPhone_screenShot'] = response.xpath("//div[@metrics-loc='iPhone']//img[@class='portrait']/@src").extract()
+    	item['iPad_screenShot'] = response.xpath("//div[@metrics-loc='iPad']//img[@class='portrait']/@src").extract()
+    	item['lauch_time'] = response.xpath("//span[@itemprop='datePublished']/text()").extract()
     	return item
 

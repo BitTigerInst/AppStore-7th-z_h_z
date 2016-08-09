@@ -15,7 +15,7 @@ SPIDER_MODULES = ['appStore.spiders']
 NEWSPIDER_MODULE = 'appStore.spiders'
 
 RETRY_ENABLED = True
-RETRY_TIMES = 2  # initial response + 2 retries = 3 requests
+RETRY_TIMES = 5  # initial response + 2 retries = 3 requests
 RETRY_HTTP_CODES = [500, 502, 503, 504, 408,403]
 RETRY_PRIORITY_ADJUST = -1
 
@@ -32,7 +32,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
