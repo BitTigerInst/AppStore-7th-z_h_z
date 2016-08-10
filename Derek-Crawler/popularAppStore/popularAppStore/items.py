@@ -8,8 +8,9 @@
 import scrapy
 
 
-class AppstoreItem(scrapy.Item):
+class PopularappstoreItem(scrapy.Item):
     # define the fields for your item here like:
+    # name = scrapy.Field()
     appID = scrapy.Field()
     name = scrapy.Field()
     category = scrapy.Field()
