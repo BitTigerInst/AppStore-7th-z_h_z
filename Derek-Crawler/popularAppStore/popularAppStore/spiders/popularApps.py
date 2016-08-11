@@ -5,9 +5,9 @@ from popularAppStore.items import PopularappstoreItem
 
 class popularAppStoreSpider(scrapy.Spider):
     name = "popularAppStore"
-    allowed_domains = ["https://itunes.apple.com"]
-    # start_urls = ['https://itunes.apple.com/us/genre/ios-health-fitness/id6013?mt=8',]
-    start_urls = ['https://itunes.apple.com/us/genre/ios-books/id6018?mt=8'
+    # allowed_domains = ["https://itunes.apple.com"]
+    start_urls = ['https://itunes.apple.com/us/genre/ios-health-fitness/id6013?mt=8'
+,'https://itunes.apple.com/us/genre/ios-books/id6018?mt=8'
 ,'https://itunes.apple.com/us/genre/ios-business/id6000?mt=8'
 ,'https://itunes.apple.com/us/genre/ios-catalogs/id6022?mt=8'
 ,'https://itunes.apple.com/us/genre/ios-education/id6017?mt=8'
