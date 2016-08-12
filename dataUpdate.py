@@ -8,14 +8,14 @@ def main():
     # dataList = convertData("items.json")
     client = MongoClient()
     db = client.AppStore
-    # for data in dataList:
-    #     db.appStore.update(
-    #         {"appID": data["appID"]},
-    #         data,
-    #         upsert=True
-    #     )
-    # print db.appStore.find().sort([{"popularScore", -1}])[0]
-    # print db.appStore.find()[0]["averageScore1"]
+    for data in dataList:
+        db.appStore.update(
+            {"appID": data["appID"]},
+            data,
+            upsert=True
+        )
+    print db.appStore.find().sort([{"popularScore", -1}])[0]
+    print db.appStore.find()[0]["averageScore1"]
     print db.appStore.find().sort([{"category", 1}])[0]
     print db.appStore.find().sort([{"averageScore2", -1}])[0]["name"]
     print db.appStore.find().count()
