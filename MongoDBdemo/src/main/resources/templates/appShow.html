@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${app.name}"></title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                    <img th:src="${app.url}" th:alt="${app.name}" class="img-thumbnail">
+                    </img>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <p th:text="${app.name}"></p>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Description</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <a data-toggle="collapse" aria-expanded="true">
+                                    Learn &nbsp;More
+                                </a>
+                            </div>
+                            <div class="collapse" id="readMore">
+                                <p th:each="des:${app.description}" th:text="${des}">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--<a th:each="url:${app.iPhone_screenShot}" th:href="${url}" th:text="${url}">-->
+                <a th:href="${app.iPhone_screenShot[0]}"th:text="${app.iPhone_screenShot[0]}">
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <div th:each="relatedApp:${relatedAppsList}" class="row"
+                 style="padding-bottom: 20px;text-overflow: ellipsis;overflow: hidden;">
+                <a th:href="|/app/${relatedApp.category}/${relatedApp.appID}|" class="thumbnail">
+                    <img th:src="${relatedApp.url}" th:alt="${relatedApp.name}" class="img-thumbnail"></img>
+                </a>
+                <a th:text="${relatedApp.name}" th:href="|/app/${relatedApp.category}/${relatedApp.appID}|"
+                   class="text-muted"
+                   style="font-size: 12px;">Porkmon GO</a>
+                <a th:text="${relatedApp.category}" th:href="|app/${relatedApp.category}|" class="text-muted"
+                   style="font-size: 12px;display: block">Games</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

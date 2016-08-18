@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Main Page</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid" style="padding-top: 60px;">
+    <div class="row">
+        <div class="span3" style="background-color:white;padding-top: 15px;padding-left: 200px;padding-right: 200px">
+            <h4>Popular Apps We Love</h4>
+            <div class="container-fluid" style="padding-top: 30px;">
+                <div class="row">
+                    <!--<p th:text="${appList[0].name}"></p>-->
+                    <!--<p th:text="${#lists.size(appList)}"></p>-->
+                    <div th:each="app:${appList}" class="col-xs-4 col-md-3 col-lg-2"
+                         style="padding-bottom: 20px;text-overflow: ellipsis;overflow: hidden;">
+                        <a th:href="|/app/${app.category}/${app.appID}|" class="thumbnail">
+                            <img th:src="${app.url}"
+                                 src="http://a1.mzstatic.com/us/r30/Purple69/v4/e9/23/1f/e9231f73-eab8-a4d9-522f-f266b61698fb/icon175x175.jpeg"
+                                 Gooleclass="img-rounded" style="width: 90px;display: block"></img>
+                        </a>
+                        <a th:text="${app.name}" th:href="|/app/${app.category}/${app.appID}|" class="text-muted"
+                           style="font-size: 12px;">Porkmon GO</a>
+                        <a th:text="${app.category}" th:href="|app/${app.category}|" class="text-muted"
+                           style="font-size: 12px;display: block">Games</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

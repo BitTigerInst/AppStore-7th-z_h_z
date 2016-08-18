@@ -5,7 +5,7 @@ from pymongo import MongoClient
 
 
 def main():
-    # dataList = convertData("items.json")
+    dataList = convertData("items.json")
     client = MongoClient()
     db = client.AppStore
     for data in dataList:
@@ -14,11 +14,6 @@ def main():
             data,
             upsert=True
         )
-    print db.appStore.find().sort([{"popularScore", -1}])[0]
-    print db.appStore.find()[0]["averageScore1"]
-    print db.appStore.find().sort([{"category", 1}])[0]
-    print db.appStore.find().sort([{"averageScore2", -1}])[0]["name"]
-    print db.appStore.find().count()
     return
 
 
@@ -96,7 +91,6 @@ def convertData(file):
                                                    data["allRatingCount"], data["allRatingValue"])
         data["averageScore2"] = calAverageRanking2(data["currentRatingCount"], data["currentRatingValue"],
                                                    data["allRatingCount"], data["allRatingValue"], data['diff'])
-        print data["appID"]
     return dataList
 
 
