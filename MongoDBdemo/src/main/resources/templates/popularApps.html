@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Popular Apps</title>
+    <meta charset="UTF-8"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
+    <script>
+        $(document).ready(function () {
+            $('#myTab a').click(function (e) {
+                $(this).tab('show')
+            })
+        });
+    </script>
+</head>
+<body>
+
+<div class="row">
+
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+        <li><a href="#Books" data-toggle="tab">Books</a></li>
+        <li><a href="#Business" data-toggle="tab">Business</a></li>
+        <li><a href="#Catalogs" data-toggle="tab">Catalogs</a></li>
+        <li><a href="#Education" data-toggle="tab">Education</a></li>
+        <li><a href="#Entertainment" data-toggle="tab">Entertainment</a></li>
+        <li><a href="#Finance" data-toggle="tab">Finance</a></li>
+        <li><a href="#Food_Drink" data-toggle="tab">Food &amp; Drink</a></li>
+        <li><a href="#Games" data-toggle="tab">Games</a></li>
+        <li><a href="#Health_Fitness" data-toggle="tab">Health &amp; Fitness</a></li>
+        <li><a href="#Lifestyle" data-toggle="tab">Lifestyle</a></li>
+        <li><a href="#News" data-toggle="tab">News</a></li>
+        <li><a href="#Productivity" data-toggle="tab">Productivity</a></li>
+        <li><a href="#Photo_Video" data-toggle="tab">Photo &amp; Video</a></li>
+        <li><a href="#Magazines_Newspapers" data-toggle="tab">Magazines &amp; Newspapers</a></li>
+        <li><a href="#Music" data-toggle="tab">Music</a></li>
+        <li><a href="#Travel" data-toggle="tab">Travel</a></li>
+        <li><a href="#Reference" data-toggle="tab">Reference</a></li>
+        <li><a href="#Sports" data-toggle="tab">Sports</a></li>
+        <li><a href="#Medical" data-toggle="tab">Medical</a></li>
+        <li><a href="#Social_Networking" data-toggle="tab">Social Networking</a></li>
+        <li><a href="#Utilities" data-toggle="tab">Utilities</a></li>
+        <li><a href="#Shopping" data-toggle="tab">Shopping</a></li>
+        <li><a href="#Navigation" data-toggle="tab">Navigation</a></li>
+        <li><a href="#Weather" data-toggle="tab">Weather</a></li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+            <div class="container-fluid" style="padding-top: 30px;">
+                <div class="row-fluid">
+                    <div th:each="iterStat:${#numbers.sequence( 0, #lists.size(top30)-1)}"
+                         class="col-xs-4 col-md-3 col-lg-2">
+                        <a th:href="|/app/${top30[iterStat].category}/${top30[iterStat].appID}|"
+                           class="thumbnail">
+                            <img th:src="${top30[iterStat].url}" Gooleclass="img-rounded"></img>
+                        </a>
+                        <!--换行不正确-->
+                        <!--<a th:text="${top30[iterStat].name}" th:href="|/app/${top30[iterStat].category}/${top30[iterStat].appID}|" class="text-muted">Porkmon GO</a>-->
+                        <a th:text="${top30[iterStat].category}" th:href="|app/${top30[iterStat].category}|"
+                           class="text-muted"
+                           style="font-size: 12px;display: block">Games</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:each="iterStat:${#numbers.sequence( 0, #lists.size(categoryList)-1)}" th:id="${categoryList[iterStat]}"
+             class="tab-pane fade" id="Books">
+            <!--<p th:text="${category}">Content of Books</p>-->
+            <div class="container-fluid" style="padding-top: 30px;">
+                <div class="row-fluid">
+                    <div th:each="index:${#numbers.sequence( iterStat*50, iterStat*50+29)}"
+                         class="col-xs-4 col-md-3 col-lg-2">
+                        <a th:href="|/app/${categoryDetails[index].category}/${categoryDetails[index].appID}|"
+                           class="thumbnail">
+                            <img th:src="${categoryDetails[index].url}" Gooleclass="img-rounded"></img>
+                        </a>
+                        <!--换行不正确-->
+                        <!--<a th:text="${categoryDetails[index].name}" th:href="|/app/${categoryDetails[index].category}/${categoryDetails[index].appID}|" class="text-muted">Porkmon GO</a>-->
+                        <a th:text="${categoryDetails[index].category}"
+                           th:href="|app/${categoryDetails[index].category}|"
+                           class="text-muted"
+                           style="font-size: 12px;display: block">Games</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.example.repository;
 
 import com.example.model.AppDocument;
+import com.example.model.popularAppDocument;
+import com.example.model.top30Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -22,8 +24,12 @@ public class AppMongoRepoCus {
         return mongoTemplate.findOne(new Query(Criteria.where("appID").is(id)), AppDocument.class);
     }
 
-    public List<AppDocument> searchByCategory(String category) {
-        return mongoTemplate.find(new Query(Criteria.where("category").is(category)), AppDocument.class);
+    public List<popularAppDocument> searchByCategory() {
+        return mongoTemplate.findAll(popularAppDocument.class);
+    }
+
+    public List<popularAppDocument> searchByCategory(String category){
+        return mongoTemplate.find(new Query(Criteria.where("category").is(category)),popularAppDocument.class);
     }
 
     public List<AppDocument> findRelatedApps(String id) {
@@ -39,7 +45,11 @@ public class AppMongoRepoCus {
         return related_App;
     }
 
-    public List<AppDocument> searchByName(String name) {
-        return mongoTemplate.find(new Query(Criteria.where("name").regex(name, "i")), AppDocument.class);
+//    public List<AppDocument> searchByName(String name) {
+//        return mongoTemplate.find(new Query(Criteria.where("name").regex(name, "i")), AppDocument.class);
+//    }
+
+    public List<top30Document> findTop30Apps() {
+        return mongoTemplate.findAll(top30Document.class);
     }
 }
