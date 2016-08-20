@@ -6,8 +6,22 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            $("#extend").click(function () {
+                $('.collapse').collapse();
+                if($(this).text()=="Learn More"){
+                    $(this).text("Hide");
+                }else{
+                    $(this).text("Learn More");
+                }
+            })
+        });
+
+    </script>
 </head>
 <body>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-8 col-md-8 col-lg-8">
@@ -18,29 +32,48 @@
                 </div>
                 <div class="col-sm-8 col-md-8 col-lg-8">
                     <p th:text="${app.name}"></p>
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Description</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div>
-                                <a data-toggle="collapse" aria-expanded="true">
-                                    Learn &nbsp;More
-                                </a>
-                            </div>
-                            <div class="collapse" id="readMore">
-                                <p th:each="des:${app.description}" th:text="${des}">
-                                </p>
-                            </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Description</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p th:text="${description[0]}">
+                        </p>
+                        <a th:if="${#lists.size(description)}>1" id="extend" href="#LearnMore" data-toggle="collapse">Learn More</a>
+                        <div id="LearnMore" class="collapse">
+                            <p th:if="${#lists.size(description)}>1" th:each="index:${#numbers.sequence( 1, #lists.size(description)-1)}" th:text="${description[index]}"></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--<div class="row">-->
-                <!--&lt;!&ndash;<a th:each="url:${app.iPhone_screenShot}" th:href="${url}" th:text="${url}">&ndash;&gt;-->
-                <!--<a th:href="${app.iPhone_screenShot[0]}"th:text="${app.iPhone_screenShot[0]}">-->
-                <!--</a>-->
-            <!--</div>-->
+            <div th:if="${screenShots}!=null" class="row">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li th:each="index:${#numbers.sequence( 0, #lists.size(screenShots)-1)}"
+                            th:attr="data-slide-to=${index}" th:class="${index== 0} ? active : ''"
+                            data-target="#carousel-example-generic" data-slide-to="0"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div th:each="index:${#numbers.sequence( 0, #lists.size(screenShots)-1)}"
+                             th:classappend="${index==0} ? active : ''" class="item">
+                            <img th:src="${screenShots[index]}"
+                                 src="http://a2.mzstatic.com/us/r30/Purple60/v4/07/48/ea/0748ea05-0652-ee23-f076-b006aca45fde/screen696x696.jpeg">
+                            </img>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="icon-prev" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="icon-next" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <div th:each="relatedApp:${relatedAppsList}" class="row"

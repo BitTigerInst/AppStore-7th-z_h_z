@@ -46,4 +46,15 @@ public class AppDocument {
         return related_app;
     }
 
+    public List<String> getDescription() {
+        return description;
+    }
+
+    public List<String> getiPad_screenShot() {
+        return iPad_screenShot;
+    }
+
+    public List<String> getiPhone_screenShot() {
+        return iPhone_screenShot;
+    }
 }

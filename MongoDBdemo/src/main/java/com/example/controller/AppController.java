@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.AppDocument;
 import com.example.repository.AppMongoRepo;
 import com.example.repository.AppMongoRepoCus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 public class AppController {
@@ -18,8 +21,8 @@ public class AppController {
     AppMongoRepoCus appRepositoryCus;
 
     @RequestMapping("/test")
-    public String home(Model model) {
-        model.addAttribute("categoryList", appRepositoryCus.findTop30Apps());
+    public String home() {
+//        model.addAttribute("categoryList", appRepositoryCus.findTop30Apps());
 //        model.addAttribute("appList", appRepository.findAll());
 //        model.addAttribute("category", appRepository.findAll());
         return "test";
@@ -56,7 +59,7 @@ public class AppController {
     //show all apps
     @RequestMapping("/app")
     public String app(Model model) {
-        model.addAttribute("appList",appRepositoryCus.searchForAll());
+        model.addAttribute("appList", appRepositoryCus.searchForAll());
         return "app";
     }
 
@@ -76,9 +79,17 @@ public class AppController {
 
     @RequestMapping("/app/{category}/{appID}")
     public String showApp(@PathVariable String appID, Model model) {
-        model.addAttribute("app", appRepositoryCus.searchById(appID));
+        AppDocument document = appRepositoryCus.searchById(appID);
+        model.addAttribute("app", document);
+        List<String> screenShots = document.getiPhone_screenShot();
+        List<String> description = document.getDescription();
         model.addAttribute("relatedAppsList", appRepositoryCus.findRelatedApps(appID));
-        return "appShow";
+        model.addAttribute("description", description);
+        if (!screenShots.isEmpty()) {
+            model.addAttribute("screenShots", screenShots);
+            return "appShow";
+        } else
+            return "test";
     }
 
 }

@@ -1,60 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title th:text="category">Popular Apps</title>
+    <title></title>
     <meta charset="UTF-8"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            $('#carousel-example-generic').carousel();
+            $(".item").click(function () {
+                $("#myCarousel").carousel(1);
+            });
+
+            // Enable Carousel Controls
+            $(".left").click(function () {
+                $("#myCarousel").carousel("prev");
+            });
+        });
+
+    </script>
 </head>
 <body>
+<!--Test carousel-->
 
 <div class="row">
-    <ul id="myTab" class="nav nav-tabs">
-        <li><a href="/popularApps">Home</a></li>
-        <li th:class="${category=='Books'} ? active : ''"><a href="/popularApps/Books">Books</a></li>
-        <li th:class="${category=='Business'} ? active : ''"><a href="/popularApps/Business">Business</a></li>
-        <li th:class="${category=='Catalogs'} ? active : ''"><a href="/popularApps/Catalogs">Catalogs</a></li>
-        <li th:class="${category=='Education'} ? active : ''"><a href="/popularApps/Education">Education</a></li>
-        <li th:class="${category=='Entertainment'} ? active : ''"><a href="/popularApps/Entertainment">Entertainment</a></li>
-        <li th:class="${category=='Finance'} ? active : ''"><a href="/popularApps/Finance">Finance</a></li>
-        <li th:class="${category=='Food_Drink'} ? active : ''"><a href="/popularApps/Food_Drink">Food &amp; Drink</a></li>
-        <li th:class="${category=='Games'} ? active : ''"><a href="/popularApps/Games">Games</a></li>
-        <li th:class="${category=='Health_Fitness'} ? active : ''"><a href="/popularApps/Health_Fitness">Health &amp; Fitness</a></li>
-        <li th:class="${category=='Lifestyle'} ? active : ''"><a href="/popularApps/Lifestyle">Lifestyle</a></li>
-        <li th:class="${category=='News'} ? active : ''"><a href="/popularApps/News">News</a></li>
-        <li th:class="${category=='Productivity'} ? active : ''"><a href="/popularApps/Productivity">Productivity</a></li>
-        <li th:class="${category=='Photo_Video'} ? active : ''"><a href="/popularApps/Photo_Video">Photo &amp; Video</a></li>
-        <li th:class="${category=='Magazines_Newspapers'} ? active : ''"><a href="/popularApps/Magazines_Newspapers">Magazines &amp; Newspapers</a></li>
-        <li th:class="${category=='Music'} ? active : ''"><a href="/popularApps/Music">Music</a></li>
-        <li th:class="${category=='Travel'} ? active : ''"><a href="/popularApps/Travel">Travel</a></li>
-        <li th:class="${category=='Reference'} ? active : ''"><a href="/popularApps/Reference">Reference</a></li>
-        <li th:class="${category=='Sports'} ? active : ''"><a href="/popularApps/Sports">Sports</a></li>
-        <li th:class="${category=='Medical'} ? active : ''"><a href="/popularApps/Medical">Medical</a></li>
-        <li th:class="${category=='Social_Networking'} ? active : ''"><a href="/popularApps/Social_Networking">Social Networking</a></li>
-        <li th:class="${category=='Utilities'} ? active : ''"><a href="/popularApps/Utilities">Utilities</a></li>
-        <li th:class="${category=='Shopping'} ? active : ''"><a href="/popularApps/Shopping">Shopping</a></li>
-        <li th:class="${category=='Navigation'} ? active : ''"><a href="/popularApps/Navigation">Navigation</a></li>
-        <li th:class="${category=='Weather'} ? active : ''"><a href="/popularApps/Weather">Weather</a></li>
-    </ul>
-    <div class="container-fluid" style="padding-top: 30px;">
-        <div class="row-fluid">
-            <div th:each="index:${#numbers.sequence( 1, #lists.size(categoryList)-1)}"
-                 class="col-xs-4 col-md-3 col-lg-2">
-                <a th:href="|/app/${categoryList[index].category}/${categoryList[index].appID}|"
-                   class="thumbnail">
-                    <img th:src="${categoryList[index].url}" Gooleclass="img-rounded"></img>
-                </a>
-                <!--换行不正确-->
-                <!--<a th:text="${categoryDetails[index].name}" th:href="|/app/${categoryDetails[index].category}/${categoryDetails[index].appID}|" class="text-muted">Porkmon GO</a>-->
-                <a th:text="${categoryList[index].category}"
-                   th:href="|app/${categoryList[index].category}|"
-                   class="text-muted"
-                   style="font-size: 12px;display: block">Games</a>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="http://a2.mzstatic.com/us/r30/Purple60/v4/07/48/ea/0748ea05-0652-ee23-f076-b006aca45fde/screen696x696.jpeg"
+                     alt="First slide">
+                </img>
+            </div>
+            <div class="item">
+                <img src="http://a4.mzstatic.com/us/r30/Purple30/v4/d8/b8/a6/d8b8a677-36ac-81ac-96c4-e8dcbb4e2956/screen696x696.jpeg"
+                     alt="Second slide">
+                </img>
+            </div>
+            <div class="item">
+                <img src="http://a2.mzstatic.com/us/r30/Purple30/v4/de/24/cb/de24cb7d-d62a-116e-3bee-61d3043e563f/screen696x696.jpeg"
+                     alt="Third slide">
+                </img>
             </div>
         </div>
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="icon-prev" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="icon-next" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </div>
-
+<!--"http://a2.mzstatic.com/us/r30/Purple60/v4/07/48/ea/0748ea05-0652-ee23-f076-b006aca45fde/screen696x696.jpeg",-->
+<!--"http://a4.mzstatic.com/us/r30/Purple30/v4/d8/b8/a6/d8b8a677-36ac-81ac-96c4-e8dcbb4e2956/screen696x696.jpeg",-->
+<!--"http://a2.mzstatic.com/us/r30/Purple30/v4/de/24/cb/de24cb7d-d62a-116e-3bee-61d3043e563f/screen696x696.jpeg",-->
+<!--"http://a3.mzstatic.com/us/r30/Purple18/v4/62/a5/a0/62a5a085-5661-d420-2355-00b3a7b3fd89/screen696x696.jpeg",-->
+<!--"http://a5.mzstatic.com/us/r30/Purple60/v4/a2/bf/3d/a2bf3d50-aa13-6855-d3de-227ba43148bc/screen390x390.jpeg",-->
+<!--"http://a2.mzstatic.com/us/r30/Purple20/v4/5d/a0/47/5da047aa-7f78-e84a-78de-0fc6a5990967/screen390x390.jpeg",-->
+<!--"http://a1.mzstatic.com/us/r30/Purple60/v4/bc/80/1a/bc801a32-c35f-2a7b-d98e-6404bed2d15a/screen390x390.jpeg",-->
+<!--"http://a2.mzstatic.com/us/r30/Purple60/v4/b2/af/5e/b2af5efb-73c3-cca8-32b0-570af64ea495/screen390x390.jpeg"-->
 </body>
 </html>
