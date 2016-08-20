@@ -38,6 +38,10 @@ public class AppDocument {
     public AppDocument() {
     }
 
+    public String getName() {
+        return name;
+    }
+
     public List<String> getRelated_app() {
         return related_app;
     }
