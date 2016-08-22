@@ -38,6 +38,10 @@ public class AppDocument {
     public AppDocument() {
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public String getName() {
         return name;
     }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class AppController {
@@ -78,12 +79,20 @@ public class AppController {
     }
 
     @RequestMapping("/app/{category}/{appID}")
-    public String showApp(@PathVariable String appID, Model model) {
+    public String showApp(@PathVariable String appID, String category, Model model) {
         AppDocument document = appRepositoryCus.searchById(appID);
         model.addAttribute("app", document);
         List<String> screenShots = document.getiPhone_screenShot();
         List<String> description = document.getDescription();
-        model.addAttribute("relatedAppsList", appRepositoryCus.findRelatedApps(appID));
+        List<AppDocument> relatedApps = appRepositoryCus.findRelatedApps(appID);
+        List<AppDocument> categoryList = appRepositoryCus.searchByCategory(document.getCategory());
+        Random random = new Random();
+        while (relatedApps.size() < 5) {
+            int index = random.nextInt(categoryList.size());
+            if (!relatedApps.contains(categoryList.get(index)))
+                relatedApps.add(categoryList.get(index));
+        }
+        model.addAttribute("relatedAppsList", relatedApps);
         model.addAttribute("description", description);
         if (!screenShots.isEmpty()) {
             model.addAttribute("screenShots", screenShots);
