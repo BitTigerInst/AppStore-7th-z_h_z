@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.model.AppDocument;
-import com.example.repository.AppMongoRepo;
 import com.example.repository.AppMongoRepoCus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,25 +15,42 @@ import java.util.Random;
 public class AppController {
 
     @Autowired
-    AppMongoRepo appRepository;
-
-    @Autowired
     AppMongoRepoCus appRepositoryCus;
 
-    @RequestMapping("/test")
-    public String home() {
-//        model.addAttribute("categoryList", appRepositoryCus.findTop30Apps());
-//        model.addAttribute("appList", appRepository.findAll());
-//        model.addAttribute("category", appRepository.findAll());
-        return "test";
+    //Main Page
+    @RequestMapping("main")
+    public String mainPage(Model model) {
+        model.addAttribute("top100", appRepositoryCus.top100Apps());
+        model.addAttribute("popular24", appRepositoryCus.popular24Apps());
+        return "MainPage";
     }
 
-    //sort by averagescore2
-    @RequestMapping("/popularApps")
-    public String popularApps(Model model) {
-//        model.addAttribute("top30", appRepositoryCus.findTop30Apps());
-        model.addAttribute("top30", appRepositoryCus.searchForHome());
-        return "popularApps";
+    //Top100
+    @RequestMapping("/top100")
+    public String top100(Model model) {
+        model.addAttribute("top100", appRepositoryCus.top100Apps());
+        return "top100";
+    }
+
+    //Popular24
+    @RequestMapping("/{category}")
+    public String popular24(@PathVariable String category, Model model) {
+        model.addAttribute("top100", appRepositoryCus.top100Apps());
+        model.addAttribute("popular24", appRepositoryCus.popular24Apps());
+        int startIndex=0;
+        if (category.equals("Entertainment")) startIndex=0;
+        if (category.equals("Games")) startIndex=1;
+        if (category.equals("Health_Fitness")) startIndex=2;
+        if (category.equals("News")) startIndex=3;
+        if (category.equals("Productivity")) startIndex=4;
+        if (category.equals("Photo_Video")) startIndex=5;
+        if (category.equals("Music")) startIndex=6;
+        if (category.equals("Shopping")) startIndex=7;
+        if (category.equals("Social_Networking")) startIndex=8;
+        if (category.equals("Utilities")) startIndex=9;
+        model.addAttribute("startIndex", startIndex);
+        model.addAttribute("category",category);
+        return "popular24";
     }
 
     @RequestMapping("/popularApps/{category}")
@@ -50,19 +66,13 @@ public class AppController {
         return "popularAppsCategory";
     }
 
-    //sort by popularscore---release time
-    @RequestMapping("/app/top30")
-    public String appTop30(Model model) {
-        model.addAttribute("top30", appRepositoryCus.findTop30Apps());
-        return "top30";
-    }
-
     //show all apps
     @RequestMapping("/app")
     public String app(Model model) {
-        model.addAttribute("appList", appRepositoryCus.searchForAll());
+        model.addAttribute("appList", appRepositoryCus.searchByCategory("Books"));
         return "app";
     }
+
 
     //show all apps from specific category
     @RequestMapping("/app/{category}")
@@ -73,11 +83,11 @@ public class AppController {
         if (category.equals("Photo_Video")) category = "Photo & Video";
         if (category.equals("Magazines_Newspapers")) category = "Magazines & Newspapers";
         if (category.equals("Social_Networking")) category = "Social Networking";
-        model.addAttribute("categoryTitle", category);
-        model.addAttribute("categoryList", appRepositoryCus.searchByCategory(category));
+        model.addAttribute("appList", appRepositoryCus.searchByCategory(category));
         return "appCategory";
     }
 
+    //show app detail
     @RequestMapping("/app/{category}/{appID}")
     public String showApp(@PathVariable String appID, String category, Model model) {
         AppDocument document = appRepositoryCus.searchById(appID);

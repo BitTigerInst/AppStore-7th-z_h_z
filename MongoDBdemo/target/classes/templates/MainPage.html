@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Main Page</title>
+    <meta charset="UTF-8"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <!--Banner-->
+    <div class="row">
+        <a href="app"> Show Me All Apps</a>
+    </div>
+    <!--Top24-->
+    <div class="row">
+        <a href="/top100">See More</a>
+        <div th:each="index:${#numbers.sequence( 0, 23)}" class="col-xs-3 col-md-2 col-lg-1">
+            <a th:href="|/app/${top100[index].category}/${top100[index].appID}|"
+               class="thumbnail">
+                <img th:src="${top100[index].url}" Gooleclass="img-rounded"></img>
+            </a>
+            <a th:text="${top100[index].name}" th:href="|/app/${top100[index].category}/${top100[index].appID}|"
+               class="text-muted">Porkmon GO</a>
+            <a th:text="${top100[index].category}" th:href="|app/${top100[index].category}|"
+               class="text-muted"
+               style="font-size: 12px;display: block">Games</a>
+        </div>
+    </div>
+    <!--Popular App-->
+    <div class="row">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="/Entertainment">Entertainment</a></li>
+            <li><a href="/Games">Games</a></li>
+            <li><a href="/Health_Fitness">Health &amp; Fitness</a></li>
+            <li><a href="/News">News</a></li>
+            <li><a href="/Productivity">Productivity</a></li>
+            <li><a href="/Photo_Video">Photo &amp; Video</a></li>
+            <li><a href="/Music">Music</a></li>
+            <li><a href="/Shopping">Shopping</a></li>
+            <li><a href="/Social_Networking">Social Networking</a></li>
+            <li><a href="/Utilities">Utilities</a></li>
+        </ul>
+        <div class="container" style="padding-top: 30px;">
+            <div class="row">
+                <div th:each="index:${#numbers.sequence( 0, 23)}"
+                     class="col-xs-4 col-md-3 col-lg-2">
+                    <a th:href="|/app/${popular24[index].category}/${popular24[index].appID}|"
+                       class="thumbnail">
+                        <img th:src="${popular24[index].url}" Gooleclass="img-rounded"></img>
+                    </a>
+                    <!--换行不正确-->
+                    <a th:text="${popular24[index].name}" th:href="|/app/${popular24[index].category}/${popular24[index].appID}|" class="text-muted">Porkmon GO</a>
+                    <a th:text="${popular24[index].category}"
+                       th:href="|app/${popular24[index].category}|"
+                       class="text-muted"
+                       style="font-size: 12px;display: block">Games</a>
+                </div>
+            </div>
+            <a href="/popularApps/Entertainment">See More</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

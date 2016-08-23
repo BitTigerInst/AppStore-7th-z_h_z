@@ -11,7 +11,6 @@
 
 <div class="row">
     <ul id="myTab" class="nav nav-tabs">
-        <li><a href="/popularApps">Home</a></li>
         <li th:class="${category=='Books'} ? active : ''"><a href="/popularApps/Books">Books</a></li>
         <li th:class="${category=='Business'} ? active : ''"><a href="/popularApps/Business">Business</a></li>
         <li th:class="${category=='Catalogs'} ? active : ''"><a href="/popularApps/Catalogs">Catalogs</a></li>
@@ -46,7 +45,7 @@
                     <img th:src="${categoryList[index].url}" Gooleclass="img-rounded"></img>
                 </a>
                 <!--换行不正确-->
-                <!--<a th:text="${categoryDetails[index].name}" th:href="|/app/${categoryDetails[index].category}/${categoryDetails[index].appID}|" class="text-muted">Porkmon GO</a>-->
+                <a th:text="${categoryList[index].name}" th:href="|/app/${categoryList[index].category}/${categoryList[index].appID}|" class="text-muted">Porkmon GO</a>
                 <a th:text="${categoryList[index].category}"
                    th:href="|app/${categoryList[index].category}|"
                    class="text-muted"
