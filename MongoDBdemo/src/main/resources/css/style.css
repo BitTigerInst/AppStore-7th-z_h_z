@@ -1,0 +1,45 @@
+body
+{
+background-size:cover;
+background-repeat:no-repeat;
+background-attachment:fixed;
+margin:0;
+}
+h1
+{
+font-family:'Patua One';
+font-size:50px;
+text-align: center;
+color:white;
+text-shadow: 0 0 20px black;
+}
+h2
+{
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size:35px;
+text-align:center;
+color:Gray;
+text-shadow: 1 20px 20px gray;
+margin: 0 0 0px;
+padding: 0;
+}
+h3
+{
+	margin: 0 0 3px;
+	padding: 0;
+}
+.Title
+{
+	color: black;
+}
+
+h5
+{
+	color:gray;
+}
+span
+{
+	color: gray;
+}
+/*nav*/
+
