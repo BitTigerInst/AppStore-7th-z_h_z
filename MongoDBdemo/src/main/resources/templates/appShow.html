@@ -35,7 +35,25 @@
 
 </head>
 <body>
+<div class="navigator">
+    <div class="container" style="margin-right: 55px;margin-left: 55px;padding-left: 0px;padding-right: 0px">
+        <div class="col-xs-2 col-md-2 col-lg-2" style="padding-left: 0px;">
+            <a href="/main"><h2>AppStore</h2></a>
 
+        </div>
+        <div class="col-xs-1 col-md-1 col-lg-3"></div>
+        <div class="col-xs-9 col-md-9 col-lg-7" style="padding-top: 5px">
+            <form class="navigator-right">
+                <div class="item"><a href="/main"><span>Home</span></a></div>
+                <div class="item"><a href="/apps"><span>All Apps</span></a></div>
+                <div class="item"><a href="/top100"><span>Top Apps</span></a></div>
+                <div class="item"><a href="/popularApps/Entertainment"><span>Popular Apps</span></a></div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row" style="margin-top:60px;margin-right: 60px;margin-left: 60px">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -89,8 +107,8 @@
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading"><h5>Screenshots:</h5>
-                    <div th:if="${screenShots}!=null" class="row">
+                <div th:if="${screenShots}!=null" class="panel-heading"><h5>Screenshots:</h5>
+                    <div  class="row">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li th:each="index:${#numbers.sequence( 0, #lists.size(screenShots)-1)}"
@@ -147,5 +165,20 @@
         </div>
     </div>
 </div>
+<script>
+    function getScrollTop() {
+        return document.body.scrollTop;//get y value of scroller
+    }
+    window.onscroll = function () {
+        if (getScrollTop() > 0) {
+            $('.navigator').css('position', 'fixed');
+            $('.navigator').css('background-color', 'whitesmoke');
+        }
+        else {
+            $('.navigator').css('position', 'relative');
+            $('.navigator').css('background-color', 'white');
+        }
+    }
+</script>
 </body>
 </html>

@@ -9,53 +9,94 @@
     <link th:href="@{/css/style.css}" type="text/css" href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<!--navigation bar-->
+<div class="navigator">
+    <div class="container" style="margin-right: 55px;margin-left: 55px;padding-left: 0px;padding-right: 0px">
+        <div class="col-xs-2 col-md-2 col-lg-2" style="padding-left: 0px;">
+            <a href="/main"><h2>AppStore</h2></a>
 
-<div class="row" style="margin-top:60px;margin-right: 60px;margin-left: 60px">
-    <div class="col-sm-3 col-md-2 col-lg-3">
-        <ul id="myTab" class="nav nav-pills nav-stacked ">
-            <li class="active"><a href="/app/Books">Books</a></li>
-            <li th:class="${category=='Business'} ? active : ''"><a href="/app/Business">Business</a></li>
-            <li th:class="${category=='Catalogs'} ? active : ''"><a href="/app/Catalogs">Catalogs</a></li>
-            <li th:class="${category=='Education'} ? active : ''"><a href="/app/Education">Education</a></li>
-            <li th:class="${category=='Entertainment'} ? active : ''"><a href="/app/Entertainment">Entertainment</a>
-            </li>
-            <li th:class="${category=='Finance'} ? active : ''"><a href="/app/Finance">Finance</a></li>
-            <li th:class="${category=='Food_Drink'} ? active : ''"><a href="/app/Food_Drink">Food &amp; Drink</a></li>
-            <li th:class="${category=='Games'} ? active : ''"><a href="/app/Games">Games</a></li>
-            <li th:class="${category=='Health_Fitness'} ? active : ''"><a href="/app/Health_Fitness">Health &amp;
-                Fitness</a></li>
-            <li th:class="${category=='Lifestyle'} ? active : ''"><a href="/app/Lifestyle">Lifestyle</a></li>
-            <li th:class="${category=='News'} ? active : ''"><a href="/app/News">News</a></li>
-            <li th:class="${category=='Productivity'} ? active : ''"><a href="/app/Productivity">Productivity</a></li>
-            <li th:class="${category=='Photo_Video'} ? active : ''"><a href="/app/Photo_Video">Photo &amp; Video</a>
-            </li>
-            <li th:class="${category=='Magazines_Newspapers'} ? active : ''"><a href="/app/Magazines_Newspapers">Magazines
-                &amp; Newspapers</a></li>
-            <li th:class="${category=='Music'} ? active : ''"><a href="/app/Music">Music</a></li>
-            <li th:class="${category=='Travel'} ? active : ''"><a href="/app/Travel">Travel</a></li>
-            <li th:class="${category=='Reference'} ? active : ''"><a href="/app/Reference">Reference</a></li>
-            <li th:class="${category=='Sports'} ? active : ''"><a href="/app/Sports">Sports</a></li>
-            <li th:class="${category=='Medical'} ? active : ''"><a href="/app/Medical">Medical</a></li>
-            <li th:class="${category=='Social_Networking'} ? active : ''"><a href="/app/Social_Networking">Social
-                Networking</a></li>
-            <li th:class="${category=='Utilities'} ? active : ''"><a href="/app/Utilities">Utilities</a></li>
-            <li th:class="${category=='Shopping'} ? active : ''"><a href="/app/Shopping">Shopping</a></li>
-            <li th:class="${category=='Navigation'} ? active : ''"><a href="/app/Navigation">Navigation</a></li>
-            <li th:class="${category=='Weather'} ? active : ''"><a href="/app/Weather">Weather</a></li>
-        </ul>
-    </div>
-    <div class="container col-sm-9 col-md-10 col-lg-9" style="padding-top: 30px;">
-        <div th:each="index1:${#numbers.sequence( 0,#lists.size(appList)/3)}" class="row">
-            <div th:each="index2:${#numbers.sequence( 3*index1, 3*index1+2)}"
-                 th:if="${index2} &lt; ${#lists.size(appList)}" class="col-xs-4 col-md-4 col-lg-4"
-                 style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
-                <a th:href="|/app/${appList[index2].category}/${appList[index2].appID}|"
-                   class="thumbnail" th:text="${appList[index2].name}" style="border: none;color: gray">
-                </a>
-            </div>
+        </div>
+        <div class="col-xs-1 col-md-1 col-lg-3"></div>
+        <div class="col-xs-9 col-md-9 col-lg-7" style="padding-top: 5px">
+            <form class="navigator-right">
+                <div class="item"><a href="/main"><span>Home</span></a></div>
+                <div class="item"><a href="/apps"><span>All Apps</span></a></div>
+                <div class="item"><a href="/top100"><span>Top Apps</span></a></div>
+                <div class="item"><a href="/popularApps/Entertainment"><span>Popular Apps</span></a></div>
+
+            </form>
+
         </div>
     </div>
 </div>
 
+<div class="row" style="margin-top:60px;margin-right: 60px;margin-left: 60px">
+    <div class="container col-sm-3 col-md-2 col-lg-3">
+        <ul id="myTab" class="nav nav-pills nav-stacked ">
+            <li class="active"><a href="/apps/Books/1">Books</a></li>
+            <li th:class="${category=='Business'} ? active : ''"><a href="/apps/Business/1">Business</a></li>
+            <li th:class="${category=='Catalogs'} ? active : ''"><a href="/apps/Catalogs/1">Catalogs</a></li>
+            <li th:class="${category=='Education'} ? active : ''"><a href="/apps/Education/1">Education</a></li>
+            <li th:class="${category=='Entertainment'} ? active : ''"><a href="/apps/Entertainment/1">Entertainment</a>
+            </li>
+            <li th:class="${category=='Finance'} ? active : ''"><a href="/apps/Finance/1">Finance</a></li>
+            <li th:class="${category=='Food_Drink'} ? active : ''"><a href="/apps/Food_Drink/1">Food &amp; Drink</a>
+            </li>
+            <li th:class="${category=='Games'} ? active : ''"><a href="/apps/Games/1">Games</a></li>
+            <li th:class="${category=='Health_Fitness'} ? active : ''"><a href="/apps/Health_Fitness/1">Health &amp;
+                Fitness</a></li>
+            <li th:class="${category=='Lifestyle'} ? active : ''"><a href="/apps/Lifestyle/1">Lifestyle</a></li>
+            <li th:class="${category=='News'} ? active : ''"><a href="/apps/News/1">News</a></li>
+            <li th:class="${category=='Productivity'} ? active : ''"><a href="/apps/Productivity/1">Productivity</a>
+            </li>
+            <li th:class="${category=='Photo_Video'} ? active : ''"><a href="/apps/Photo_Video/1">Photo &amp; Video</a>
+            </li>
+            <li th:class="${category=='Magazines_Newspapers'} ? active : ''"><a href="/apps/Magazines_Newspapers/1">Magazines
+                &amp; Newspapers</a></li>
+            <li th:class="${category=='Music'} ? active : ''"><a href="/apps/Music/1">Music</a></li>
+            <li th:class="${category=='Travel'} ? active : ''"><a href="/apps/Travel/1">Travel</a></li>
+            <li th:class="${category=='Reference'} ? active : ''"><a href="/apps/Reference/1">Reference</a></li>
+            <li th:class="${category=='Sports'} ? active : ''"><a href="/apps/Sports/1">Sports</a></li>
+            <li th:class="${category=='Medical'} ? active : ''"><a href="/apps/Medical/1">Medical</a></li>
+            <li th:class="${category=='Social_Networking'} ? active : ''"><a href="/apps/Social_Networking/1">Social
+                Networking</a></li>
+            <li th:class="${category=='Utilities'} ? active : ''"><a href="/apps/Utilities/1">Utilities</a></li>
+            <li th:class="${category=='Shopping'} ? active : ''"><a href="/apps/Shopping/1">Shopping</a></li>
+            <li th:class="${category=='Navigation'} ? active : ''"><a href="/apps/Navigation/1">Navigation</a></li>
+            <li th:class="${category=='Weather'} ? active : ''"><a href="/apps/Weather/1">Weather</a></li>
+        </ul>
+    </div>
+    <div class="container col-sm-9 col-md-10 col-lg-9" style="padding-top: 30px;">
+        <div th:each="index2:${#numbers.sequence( 0,59)}" class="col-xs-4 col-md-4 col-lg-4"
+             style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+            <a th:href="|/app/${appList[index2].category}/${appList[index2].appID}|"
+               class="thumbnail" th:text="${appList[index2].name}" style="border: none;color: gray">
+            </a>
+        </div>
+        <ul class="pager col-sm-12 col-md-12 col-lg-12">
+            <li class="previous disabled"><a href="#">&larr;Previous</a></li>
+            <li class="active"><a href="/apps/Books/1">1</a></li>
+            <li th:each="index:${#numbers.sequence( 2,8)}"><a th:href="|/apps/Books/${index}|"
+                                                              th:text="${index}">2</a>
+            </li>
+            <li class="next"><a href="/apps/Books/2">Next &rarr;</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    function getScrollTop() {
+        return document.body.scrollTop;//get y value of scroller
+    }
+    window.onscroll = function () {
+        if (getScrollTop() > 0) {
+            $('.navigator').css('position', 'fixed');
+            $('.navigator').css('background-color', 'whitesmoke');
+        }
+        else {
+            $('.navigator').css('position', 'relative');
+            $('.navigator').css('background-color', 'white');
+        }
+    }
+</script>
 </body>
 </html>

@@ -15,12 +15,26 @@ h1 {
 
 h2 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 35px;
+    font-size: 30px;
     text-align: center;
     color: Gray;
     text-shadow: 1 20px 20px gray;
     margin: 0 0 0px;
     padding: 0;
+}
+
+.navigator h2 {
+    font-size: 30px;
+    text-align: center;
+    color: Gray;
+    margin: 0 0 0px;
+    padding-left: 0px;
+    border-weight: 100;
+    font-weight: lighter;
+}
+
+.navigator span {
+    font-weight: lighter;
 }
 
 h3 {
@@ -43,32 +57,62 @@ span {
 
 a:link {
     text-decoration: none;
-
 }
 
 a:visited {
     text-decoration: none;
-
 }
 
 a:hover {
     text-decoration: none;
-
 }
 
 a:active {
     text-decoration: none;
-
 }
 
 .header {
     position: relative;
     top: 0px;
     z-index: 200000;
-    background-color: gainsboro;
+    background-color: whitesmoke;
     padding-top: 5px;
     padding-bottom: 5px;
     width: 100%;
     height: 60px;
+    min-width: 800px;
 
 }
+
+.navigator {
+    position: relative;
+    top: 0px;
+    z-index: 200000;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    width: 100%;
+    height: 55px;
+    opacity: 0.9;
+    border-bottom: 1px solid whitesmoke;
+    min-width: 800px;
+}
+
+.navigator-right {
+
+    float: right !important;
+    position: relative;
+
+}
+
+.navigator-right .item {
+    padding-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navigator-right span {
+    font-weight: lighter;
+}
+
+
