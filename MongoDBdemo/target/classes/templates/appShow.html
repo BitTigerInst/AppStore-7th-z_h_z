@@ -5,9 +5,12 @@
     <meta charset="UTF-8"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.css" rel="stylesheet"/>
+
+    <link th:href="@{/css/style.css}" type="text/css" href="../css/style.css" rel="stylesheet"/>
     <script th:inline="javascript">
         $(document).ready(function () {
+            $('#carousel-example-generic').carousel();
             $("#extend").click(function () {
                 $('.collapse').collapse();
                 if ($(this).text() == "Learn More") {
@@ -33,28 +36,50 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-10 col-md-10 col-lg-10">
-            <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <img th:src="${app.url}" th:alt="${app.name}" class="img-thumbnail">
+<div class="container-fluid">
+    <div class="row" style="margin-top:60px;margin-right: 60px;margin-left: 60px">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="row" style="margin-bottom: 20px">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <img th:src="${app.url}" th:alt="${app.name}" class="img-thumbnail"
+                         style="width: 175px;height: 175px">
                     </img>
+
                 </div>
                 <div class="col-sm-8 col-md-8 col-lg-8">
-                    <p th:text="${app.name}"></p>
-                    <p th:text="${app.lauch_time}"></p>
-                    <p th:text="${#calendars.format(app.lauch_time,'MMMM dd yyyy')}"></p>
+                    <div class="row" style="margin-top:15px">
+                        <div class="col-sm-5 col-md-5 col-lg-5" style="padding-left: 0px;"><h3 th:text="${app.name}">
+                            Sample Name</h3></div>
+                        <div class="col-sm-4 col-md-4 col-lg-4" style="padding-top: 10px;">
+                            <!--<a class="btn btn-primary btn-xs" target="_blank" th:href="${.....}">-->
+                            <!--View in iTunes-->
+                            <!--</a>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>Customer Ratings</h4>
+                        <div><span>Current Version:</span></div>
+                        <div>
+                            <span th:text="Rating + ' '+${app.currentRatingValue}+', '">Raing 3.7</span>
+                            <span th:text="${app.currentRatingCount}+' '+Ratings">, 2777 Ratings</span>
+                        </div>
+                        <div><span>All Versions:</span></div>
+                        <div>
+                            <span th:text="Rating + ' '+${app.allRatingValue}+', '">Raing 3.0</span>
+                            <span th:text="${app.allRatingCount}+' '+Ratings">, 1989987 Ratings</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="panel panel-info">
+            <div class="row">
                 <div class="panel-heading">
                     <h3 class="panel-title">Description</h3>
                 </div>
                 <div class="panel-body">
-                    <p th:text="${description[0]}">
+                    <p th:text="${description[0]}">description......
                     </p>
-                    <a th:if="${#lists.size(description)}>1" id="extend" href="#LearnMore" data-toggle="collapse" class="text-right">Learn More</a>
+                    <a th:if="${#lists.size(description)}>1" id="extend" href="#LearnMore" data-toggle="collapse">Learn More</a>
                     <div id="LearnMore" class="collapse">
                         <p th:if="${#lists.size(description)}>1"
                            th:each="index:${#numbers.sequence( 1, #lists.size(description)-1)}"
@@ -62,9 +87,9 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-info">
-                <div class="panel-heading"><h5>Screenshots:</h5></div>
-                <div class="panel-body">
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><h5>Screenshots:</h5>
                     <div th:if="${screenShots}!=null" class="row">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
@@ -94,23 +119,28 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h6>You May Also Like:</h6>
-                </div>
-                <div class="panel-body">
-                    <div th:each="relatedApp:${relatedAppsList}" class="row"
-                         style="padding-bottom: 20px;text-overflow: ellipsis;overflow: hidden;">
-                        <a th:href="|/app/${relatedApp.category}/${relatedApp.appID}|" class="thumbnail">
-                            <img th:src="${relatedApp.url}" th:alt="${relatedApp.name}" class="img-responsive"></img>
-                        </a>
-                        <a th:text="${relatedApp.name}" th:href="|/app/${relatedApp.category}/${relatedApp.appID}|"
-                           class="text-muted"
-                           style="font-size: 12px;">Porkmon GO</a>
-                        <a th:text="${relatedApp.category}" th:href="|app/${relatedApp.category}|" class="text-muted"
-                           style="font-size: 12px;display: block">Games</a>
+            <div class="row" style="margin-top: 40px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5>You May Also Like:</h5>
+                        <div class="row">
+                            <div th:each="relatedApp:${relatedAppsList}" class="col-sm-2 col-md-2 col-lg-2"
+                                 style="padding-bottom: 20px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                                <a th:href="|/app/${relatedApp.category}/${relatedApp.appID}|">
+                                    <img style="width: 100px;height: 100px" th:src="${relatedApp.url}"
+                                         th:alt="${relatedApp.name}" class="img-responsive"></img>
+                                </a>
+                                <a th:text="${relatedApp.name}"
+                                   th:href="|/app/${relatedApp.category}/${relatedApp.appID}|"
+                                   class="text-muted"
+                                   style="font-size: 12px;"></a>
+                                <a th:text="${relatedApp.category}" th:href="|app/${relatedApp.category}|"
+                                   class="text-muted"
+                                   style="font-size: 12px;display: block">Games</a>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

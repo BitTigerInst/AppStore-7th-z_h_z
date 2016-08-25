@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="row">
+<div class="row" style="margin-top:60px;margin-right: 60px;margin-left: 60px">
     <ul id="myTab" class="nav nav-pills nav-stacked col-sm-3 col-md-3 col-lg-3">
         <li th:class="${category=='Books'} ? active : ''"><a href="/app/Books">Books</a></li>
         <li th:class="${category=='Business'} ? active : ''"><a href="/app/Business">Business</a></li>
@@ -39,12 +39,13 @@
         <li th:class="${category=='Navigation'} ? active : ''"><a href="/app/Navigation">Navigation</a></li>
         <li th:class="${category=='Weather'} ? active : ''"><a href="/app/Weather">Weather</a></li>
     </ul>
-    <div class="container col-sm-9 col-md-9 col-lg-9" style="padding-top: 30px;">
+    <div class="container col-sm-9 col-md-10 col-lg-9" style="padding-top: 30px;">
         <div th:each="index1:${#numbers.sequence( 0,#lists.size(appList)/3)}" class="row">
             <div th:each="index2:${#numbers.sequence( 3*index1, 3*index1+2)}"
-                 th:if="${index2} &lt; ${#lists.size(appList)}" class="col-xs-4 col-md-4 col-lg-4">
+                 th:if="${index2} &lt; ${#lists.size(appList)}" class="col-xs-4 col-md-4 col-lg-4"
+                 style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
                 <a th:href="|/app/${appList[index2].category}/${appList[index2].appID}|"
-                   class="thumbnail" th:text="${appList[index2].name}">
+                   class="thumbnail" th:text="${appList[index2].name}" style="border: none;color: gray">
                 </a>
             </div>
         </div>

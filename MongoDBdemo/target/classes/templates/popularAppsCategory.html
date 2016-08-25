@@ -10,50 +10,67 @@
 <body>
 
 <div class="row">
-    <ul id="myTab" class="nav nav-tabs">
+    <ul id="myTab" class="nav nav-tabs" style="font-size:small; margin-top:20px;margin-right: 60px;margin-left: 60px">
         <li th:class="${category=='Books'} ? active : ''"><a href="/popularApps/Books">Books</a></li>
         <li th:class="${category=='Business'} ? active : ''"><a href="/popularApps/Business">Business</a></li>
         <li th:class="${category=='Catalogs'} ? active : ''"><a href="/popularApps/Catalogs">Catalogs</a></li>
         <li th:class="${category=='Education'} ? active : ''"><a href="/popularApps/Education">Education</a></li>
-        <li th:class="${category=='Entertainment'} ? active : ''"><a href="/popularApps/Entertainment">Entertainment</a></li>
+        <li th:class="${category=='Entertainment'} ? active : ''"><a
+                href="/popularApps/Entertainment">Entertainment</a>
+        </li>
         <li th:class="${category=='Finance'} ? active : ''"><a href="/popularApps/Finance">Finance</a></li>
-        <li th:class="${category=='Food_Drink'} ? active : ''"><a href="/popularApps/Food_Drink">Food &amp; Drink</a></li>
+        <li th:class="${category=='Food_Drink'} ? active : ''"><a href="/popularApps/Food_Drink">Food &amp;
+            Drink</a>
+        </li>
         <li th:class="${category=='Games'} ? active : ''"><a href="/popularApps/Games">Games</a></li>
-        <li th:class="${category=='Health_Fitness'} ? active : ''"><a href="/popularApps/Health_Fitness">Health &amp; Fitness</a></li>
+        <li th:class="${category=='Health_Fitness'} ? active : ''"><a href="/popularApps/Health_Fitness">Health
+            &amp;
+            Fitness</a></li>
         <li th:class="${category=='Lifestyle'} ? active : ''"><a href="/popularApps/Lifestyle">Lifestyle</a></li>
         <li th:class="${category=='News'} ? active : ''"><a href="/popularApps/News">News</a></li>
-        <li th:class="${category=='Productivity'} ? active : ''"><a href="/popularApps/Productivity">Productivity</a></li>
-        <li th:class="${category=='Photo_Video'} ? active : ''"><a href="/popularApps/Photo_Video">Photo &amp; Video</a></li>
-        <li th:class="${category=='Magazines_Newspapers'} ? active : ''"><a href="/popularApps/Magazines_Newspapers">Magazines &amp; Newspapers</a></li>
+        <li th:class="${category=='Productivity'} ? active : ''"><a
+                href="/popularApps/Productivity">Productivity</a>
+        </li>
+        <li th:class="${category=='Photo_Video'} ? active : ''"><a href="/popularApps/Photo_Video">Photo &amp;
+            Video</a>
+        </li>
+        <li th:class="${category=='Magazines_Newspapers'} ? active : ''"><a
+                href="/popularApps/Magazines_Newspapers">Magazines
+            &amp; Newspapers</a></li>
         <li th:class="${category=='Music'} ? active : ''"><a href="/popularApps/Music">Music</a></li>
         <li th:class="${category=='Travel'} ? active : ''"><a href="/popularApps/Travel">Travel</a></li>
         <li th:class="${category=='Reference'} ? active : ''"><a href="/popularApps/Reference">Reference</a></li>
         <li th:class="${category=='Sports'} ? active : ''"><a href="/popularApps/Sports">Sports</a></li>
         <li th:class="${category=='Medical'} ? active : ''"><a href="/popularApps/Medical">Medical</a></li>
-        <li th:class="${category=='Social_Networking'} ? active : ''"><a href="/popularApps/Social_Networking">Social Networking</a></li>
+        <li th:class="${category=='Social_Networking'} ? active : ''"><a href="/popularApps/Social_Networking">Social
+            Networking</a></li>
         <li th:class="${category=='Utilities'} ? active : ''"><a href="/popularApps/Utilities">Utilities</a></li>
         <li th:class="${category=='Shopping'} ? active : ''"><a href="/popularApps/Shopping">Shopping</a></li>
         <li th:class="${category=='Navigation'} ? active : ''"><a href="/popularApps/Navigation">Navigation</a></li>
         <li th:class="${category=='Weather'} ? active : ''"><a href="/popularApps/Weather">Weather</a></li>
     </ul>
-    <div class="container-fluid" style="padding-top: 30px;">
-        <div class="row-fluid">
-            <div th:each="index:${#numbers.sequence( 0, 29)}"
-                 class="col-xs-4 col-md-3 col-lg-2">
-                <a th:href="|/app/${categoryList[index].category}/${categoryList[index].appID}|"
-                   class="thumbnail">
-                    <img th:src="${categoryList[index].url}" Gooleclass="img-rounded"></img>
-                </a>
-                <!--换行不正确-->
-                <a th:text="${categoryList[index].name}" th:href="|/app/${categoryList[index].category}/${categoryList[index].appID}|" class="text-muted">Porkmon GO</a>
-                <a th:text="${categoryList[index].category}"
-                   th:href="|app/${categoryList[index].category}|"
-                   class="text-muted"
-                   style="font-size: 12px;display: block">Games</a>
+
+    <div class="row" style="margin-top:10px;margin-right: 60px;margin-left: 60px">
+        <div class="container-fluid" style="padding-top: 30px;">
+            <div class="row-fluid">
+                <div th:each="index:${#numbers.sequence( 0, 29)}"
+                     class="col-xs-4 col-md-3 col-lg-2"
+                     style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                    <a th:href="|/app/${categoryList[index].category}/${categoryList[index].appID}|"
+                       class="thumbnail">
+                        <img th:src="${categoryList[index].url}" Gooleclass="img-rounded"></img>
+                    </a>
+                    <a th:text="${categoryList[index].name}"
+                       th:href="|/app/${categoryList[index].category}/${categoryList[index].appID}|" class="text-muted">Porkmon
+                        GO Porkmon GO Porkmon GO Porkmon GO</a>
+                    <a th:text="${categoryList[index].category}"
+                       th:href="|app/${categoryList[index].category}|"
+                       class="text-muted"
+                       style="font-size: 12px;display: block">Games</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

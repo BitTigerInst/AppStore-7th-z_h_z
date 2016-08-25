@@ -1,3 +1,7 @@
-/Users/Derek/Downloads/MongoDBdemo/src/main/java/com/example/MongoDBdemoApplication.java
-/Users/Derek/Downloads/MongoDBdemo/src/main/java/com/example/AppDocument.java
-/Users/Derek/Downloads/MongoDBdemo/src/main/java/com/example/AppConfig.java
+/Users/Derek/Documents/AppStore-7th-z_h_z/MongoDBdemo/src/main/java/com/example/model/AppDocument.java
+/Users/Derek/Documents/AppStore-7th-z_h_z/MongoDBdemo/src/main/java/com/example/model/top100Document.java
+/Users/Derek/Documents/AppStore-7th-z_h_z/MongoDBdemo/src/main/java/com/example/repository/AppMongoRepoCus.java
+/Users/Derek/Documents/AppStore-7th-z_h_z/MongoDBdemo/src/main/java/com/example/controller/AppController.java
+/Users/Derek/Documents/AppStore-7th-z_h_z/MongoDBdemo/src/main/java/com/example/model/popularAppTop24Document.java
+/Users/Derek/Documents/AppStore-7th-z_h_z/MongoDBdemo/src/main/java/com/example/MongoDBdemoApplication.java
+/Users/Derek/Documents/AppStore-7th-z_h_z/MongoDBdemo/src/main/java/com/example/model/popularAppDocument.java
