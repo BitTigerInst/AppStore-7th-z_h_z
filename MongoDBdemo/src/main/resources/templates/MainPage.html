@@ -7,7 +7,7 @@
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.css" rel="stylesheet"/>
-    <link th:href="@{/css/style.css}" type="text/css" href="../css/style.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" type="text/css" href="../static/css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <!--Banner-->
@@ -21,9 +21,9 @@
             </a>
         </div>
         <div class="col-xs-7 col-md-7 col-lg-7"></div>
-        <div class="col-xs-3 col-md-3 col-lg-3">
-            <form class="navbar-form navbar-right">
-                <div class="form-group"><a href="app"><span>Show Me All Apps</span></a></div>
+        <div class="col-xs-3 col-md-3 col-lg-3"  style="padding-top: 5px">
+            <form class="navigator-right">
+                <div class="item"><a href="/app"><span>Show Me All Apps</span></a></div>
             </form>
 
         </div>

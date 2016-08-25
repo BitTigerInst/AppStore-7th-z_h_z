@@ -6,11 +6,31 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"/>
-    <link th:href="@{/css/style.css}" type="text/css" href="../css/style.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" type="text/css" href="../static/css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<!--navigation bar-->
+<div class="navigator">
+    <div class="container" style="margin-right: 55px;margin-left: 55px;padding-left: 0px;padding-right: 0px">
+        <div class="col-xs-2 col-md-2 col-lg-2" style="padding-left: 0px;">
+            <h2>AppStore</h2>
 
-<div class="row" style="margin-top:60px;margin-right: 60px;margin-left: 60px">
+        </div>
+        <div class="col-xs-1 col-md-1 col-lg-3"></div>
+        <div class="col-xs-9 col-md-9 col-lg-7" style="padding-top: 5px">
+            <form class="navigator-right">
+                <div class="item"><a href="/main"><span>Home</span></a></div>
+                <div class="item"><a href="/app"><span>All Apps</span></a></div>
+                <div class="item"><a href="/top1000"><span>Top Apps</span></a></div>
+                <div class="item"><a href="/popularApps/Entertainment"><span>Popular Apps</span></a></div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--content-->
+<div class="row" style="margin-top:20px;margin-right: 60px;margin-left: 60px">
     <div class="col-sm-3 col-md-2 col-lg-3">
         <ul id="myTab" class="nav nav-pills nav-stacked ">
             <li class="active"><a href="/app/Books">Books</a></li>
@@ -56,6 +76,23 @@
         </div>
     </div>
 </div>
+<script>
+    function getScrollTop(){
+        return document.body.scrollTop;//get y value of scroller
+    }
+    window.onscroll = function(){
+        if(getScrollTop()  > 0){
+            $('.navigator').css('position','fixed');
+            $('.navigator').css('background-color','whitesmoke');
+        }
 
+
+        else{
+            $('.navigator').css('position','relative');
+            $('.navigator').css('background-color', 'white');
+        }
+
+    }
+</script>
 </body>
 </html>
