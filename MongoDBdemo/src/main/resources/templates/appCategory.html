@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<div class="row" style="margin-top:60px;margin-right: 60px;margin-left: 60px">
+<div class="row" style="padding-top: 10px;margin-right: 60px;margin-left: 60px">
     <ul id="myTab" class="nav nav-pills nav-stacked col-sm-3 col-md-3 col-lg-3">
         <li th:class="${category=='Books'} ? active : ''"><a href="/apps/Books/1">Books</a></li>
         <li th:class="${category=='Business'} ? active : ''"><a href="/apps/Business/1">Business</a></li>
@@ -58,7 +58,7 @@
         <li th:class="${category=='Navigation'} ? active : ''"><a href="/apps/Navigation/1">Navigation</a></li>
         <li th:class="${category=='Weather'} ? active : ''"><a href="/apps/Weather/1">Weather</a></li>
     </ul>
-    <div class="container col-sm-9 col-md-10 col-lg-9" style="padding-top: 30px;">
+    <div class="container col-sm-9 col-md-10 col-lg-9" style="padding-top: 10px;">
         <div th:each="index2:${#numbers.sequence(start,end)}" class="col-xs-4 col-md-4 col-lg-4"
              style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
             <a th:href="|/app/${appList[index2].category}/${appList[index2].appID}|"
