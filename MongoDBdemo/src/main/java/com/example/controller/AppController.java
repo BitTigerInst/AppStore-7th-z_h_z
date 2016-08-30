@@ -125,4 +125,10 @@ public class AppController {
         return "appShow";
     }
 
+    //About Page
+    @RequestMapping("/about")
+    public String about() {
+        return "about";
+    }
+
 }
